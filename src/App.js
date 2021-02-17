@@ -1,24 +1,42 @@
-import logo from './logo.svg';
-import './App.css';
+import styled from "styled-components";
+import { Normalize } from "styled-normalize";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import Home from "./pages/home";
+import Cart from "./pages/Cart";
+
+const Container = styled.div`
+  @import url("https://fonts.googleapis.com/css2?family=Padauk:wght@400;700&display=swap");
+  background: linear-gradient(to right, #fc00ff, #00dbde);
+  font-family: "Padauk", sans-serif;
+  color: #444;
+  min-height: 100vh;
+`;
+
+const Main = styled.main`
+  max-width: 1100px;
+  width: 100%;
+  margin: 0 auto;
+`;
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Container>
+      <Router>
+        <Normalize />
+        <Navbar />
+        <Main>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/cart">
+              <Cart />
+            </Route>
+          </Switch>
+        </Main>
+      </Router>
+    </Container>
   );
 }
 
